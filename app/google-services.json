@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "256391882349",
+    "firebase_url": "https://collegebuddy-41d10.firebaseio.com",
+    "project_id": "collegebuddy-41d10",
+    "storage_bucket": "collegebuddy-41d10.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:256391882349:android:5e56a0aeec4a54bb",
+        "android_client_info": {
+          "package_name": "majorproject.kone.in.collegebudy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "256391882349-rjmmotkl7m4sp1toc6okpmomco681el7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "majorproject.kone.in.collegebudy",
+            "certificate_hash": "FBCF8CA16DB1BCB35500B6095CE982C6C907B083"
+          }
+        },
+        {
+          "client_id": "256391882349-jjqv3lkpep8triaigarkui948imlnr89.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHP1tQfUS-X_X3M4C-y2XB5tyeKI2Fkms"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "256391882349-jjqv3lkpep8triaigarkui948imlnr89.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
