@@ -15,9 +15,6 @@ public class NotificationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getActionBar().setDisplayHomeAsUpEnabled(true);*/
-        setContentView(R.layout.notification);
+         setContentView(R.layout.notification);
     }
 }

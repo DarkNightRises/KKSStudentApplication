@@ -2,6 +2,7 @@ package majorproject.kone.in.collegebudy.activity;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -31,42 +32,59 @@ public class Reminder extends AppCompatActivity {
     String titleData, dateData, descriptionData, timeData;
     public static TextView noReminderText;
     public static ImageView noImageReminder;
-    public static CardView cardViewReminder;
+    private int REQUEST_CODE=1;
+    private RecyclerView mRecyclerView;
+    public static RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    private static List<ReminderList> reminderList;
+    public static ReminderDbHelper reminderDbHelper;
 
+
+    public static void getAllReminder(){
+        reminderList.clear();
+        reminderList.addAll(Reminder.reminderDbHelper.getAllReminders());
+        mAdapter.notifyDataSetChanged();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reminder);
-        title = (EditText) findViewById(R.id.title_edittext);
-        description = (EditText) findViewById(R.id.description_edittext);
-        date = (EditText) findViewById(R.id.date_edittext);
-        time = (EditText) findViewById(R.id.time_edittext);
-        noReminderText =(TextView)findViewById(R.id.no_notification_textview);
-        noImageReminder=(ImageView)findViewById(R.id.no_notification_imageview);
-        cardViewReminder=(CardView)findViewById(R.id.cardview_reminder);
-
-        Intent intent = this.getIntent();
-        if (intent != null) {
-            titleData = intent.getStringExtra("TilteData");
-            dateData = intent.getStringExtra("DateData");
-            descriptionData = intent.getStringExtra("DescriptionData");
-            timeData = intent.getStringExtra("TimeData");
-            title.setText(timeData);
-            date.setText(dateData);
-            description.setText(descriptionData);
-            time.setText(timeData);
-        }
-
+        reminderDbHelper = new ReminderDbHelper(Reminder.this);
+        noReminderText = (TextView) findViewById(R.id.no_notification_textview);
+        noImageReminder = (ImageView) findViewById(R.id.no_notification_imageview);
+        mRecyclerView=(RecyclerView) findViewById(R.id.reminder_Recyclerview);
+        mRecyclerView.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        ReminderDbHelper reminderDbHelper=new ReminderDbHelper(this);
+        reminderList=reminderDbHelper.getAllReminders();
+        mAdapter =new RecyclerViewAdapter(reminderList);
+        mRecyclerView.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Reminder.this, AddReminder.class);
-                startActivity(intent);
+               startActivity(new Intent(Reminder.this,AddReminder.class));
+
 
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode==REQUEST_CODE && resultCode==RESULT_OK)
+        {
+
+        }
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 }

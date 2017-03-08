@@ -13,4 +13,14 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_reminder">Reminder</string>
+    <string-array name="list_of_teachers">
+    <item>Teacher2</item>
+    <item>Teacher3</item>
+    <item>Teacher4</item>
+    <item>Teacher5</item>
+    <item>Teacher6</item>
+    <item>Teacher7</item>
+    <item>Teacher8</item>
+    <item>Teacher1</item>
+</string-array>
 </resources>

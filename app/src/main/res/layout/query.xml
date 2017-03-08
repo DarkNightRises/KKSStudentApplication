@@ -1,44 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:background="#eee"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="100dp"
+    android:id="@+id/relative_query"
+    android:orientation="vertical">
 
-    <EditText
-        android:hint="Enter your Query...."
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView2"
-        android:layout_margin="10dp"
-        android:textStyle="bold"
-        android:background="#fff"
-        android:textSize="30sp"
-        />
+        android:orientation="vertical">
 
-    <EditText
-        android:padding="10dp"
-        android:layout_margin="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:id="@+id/query_text"
-        android:background="#fff"
-        android:hint="Enter your query text"
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:background="#eee"
-        >
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="Send Query"
-        android:id="@+id/sendQuery"
-        android:background="@color/colorPrimary"
-        />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:hint="Enter Query"
+                android:textColor="@color/colorPrimary"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+                <EditText
+                    android:id="@+id/query"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45dp"
+                    android:inputType="textMultiLine"
+                    android:lines="10"
+                    android:maxLines="20"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@android:color/white" />
+            </android.support.v7.widget.CardView>
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:hint="Select Teacher"
+                android:textColor="@color/colorPrimary"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <AutoCompleteTextView
+                android:id="@+id/query_auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
         </LinearLayout>
-</LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+
+    <Button
+        android:id="@+id/sendQuery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="SEND QUERY"
+        android:layout_alignParentBottom="true"/>
+
+
+</RelativeLayout>
+

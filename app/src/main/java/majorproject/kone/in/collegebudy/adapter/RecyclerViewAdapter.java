@@ -19,19 +19,21 @@ import majorproject.kone.in.collegebudy.activity.ReminderList;
  */
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
-    public List<Reminder> reminderList;
+    public List<ReminderList> allReminderList;
 
-    public RecyclerViewAdapter(List<Reminder> reminderList) {
-        this.reminderList = reminderList;
+    public RecyclerViewAdapter(List<ReminderList> reminderList) {
+        this.allReminderList = reminderList;
     }
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public EditText title, description, date;
+        public TextView title,day,month,year;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            title = (EditText) itemView.findViewById(R.id.title);
-            description = (EditText) itemView.findViewById(R.id.description);
-            date = (EditText) itemView.findViewById(R.id.date);
+            title = (TextView) itemView.findViewById(R.id.title);
+            day = (TextView) itemView.findViewById(R.id.day);
+            month = (TextView) itemView.findViewById(R.id.month);
+            year = (TextView) itemView.findViewById(R.id.year);
+
         }
     }
 
@@ -43,16 +45,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        /*Reminder reminders=reminderList.get(position);
-        holder.title.setText(reminders.getTitle());
-        holder.date.setText(reminders.getDate());
-        holder.description.setText(reminders.getDescription());*/
+        ReminderList reminderList = allReminderList.get(position);
+        holder.title.setText(reminderList.getTitle());
+        holder.day.setText(reminderList.getDay());
+        holder.month.setText(reminderList.getMonth());
+        holder.year.setText(reminderList.getYear());
 
     }
 
     @Override
     public int getItemCount() {
-        return reminderList.size();
+        return allReminderList.size();
     }
 
 

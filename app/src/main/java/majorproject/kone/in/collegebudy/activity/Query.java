@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -28,6 +30,7 @@ public class Query extends AppCompatActivity implements View.OnClickListener,Net
     FetchData fetchData;
     Button sendQuery;
     JSONObject jsonObject;
+    AutoCompleteTextView autoCompleteTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +39,10 @@ public class Query extends AppCompatActivity implements View.OnClickListener,Net
         getActionBar().setDisplayHomeAsUpEnabled(true);*/
         setContentView(R.layout.query);
         query_text = (TextView) findViewById(R.id.query_text);
+        autoCompleteTextView =(AutoCompleteTextView)findViewById(R.id.query_auto);
+        String[] teacherList=getResources().getStringArray(R.array.list_of_teachers);
+        ArrayAdapter adapter =new ArrayAdapter(this,R.layout.support_simple_spinner_dropdown_item,teacherList);
+        autoCompleteTextView.setAdapter(adapter);
         sendQuery = (Button) findViewById(R.id.sendQuery);
         sendQuery.setOnClickListener(this);
     }
