@@ -1,52 +1,40 @@
 package majorproject.kone.in.collegebudy.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.TextView;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 
-import majorproject.kone.in.collegebudy.Config;
 import majorproject.kone.in.collegebudy.R;
 import majorproject.kone.in.collegebudy.listener.NetworkResponseListener;
-import majorproject.kone.in.collegebudy.network.FetchData;
 
-/**
- * Created by kartikey on 23/12/16.
- */
-
-public class Query extends AppCompatActivity implements View.OnClickListener,NetworkResponseListener{
-    TextView query_text;
-    FetchData fetchData;
-    Button sendQuery;
-    JSONObject jsonObject;
+public class WriteQuery extends AppCompatActivity implements View.OnClickListener,NetworkResponseListener {
     AutoCompleteTextView autoCompleteTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setContentView(R.layout.activity_write_query);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getActionBar().setDisplayHomeAsUpEnabled(true);*/
-        setContentView(R.layout.query);
-/*
-        query_text = (TextView) findViewById(R.id.query_text);
-       // autoCompleteTextView =(AutoCompleteTextView)findViewById(R.id.query_auto);
+        autoCompleteTextView =(AutoCompleteTextView)findViewById(R.id.query_auto);
         String[] teacherList=getResources().getStringArray(R.array.list_of_teachers);
         ArrayAdapter adapter =new ArrayAdapter(this,R.layout.support_simple_spinner_dropdown_item,teacherList);
         autoCompleteTextView.setAdapter(adapter);
-       // sendQuery = (Button) findViewById(R.id.sendQuery);
-        sendQuery.setOnClickListener(this);
-*/
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+
     }
 
     @Override
@@ -82,3 +70,5 @@ public class Query extends AppCompatActivity implements View.OnClickListener,Net
 
     }
 }
+
+

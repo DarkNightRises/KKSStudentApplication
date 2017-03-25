@@ -52,20 +52,18 @@ public class ViewPagerPageFragment extends Fragment {
         if (mPage == 1) {
             swipetostartiv.setImageResource(0);
             swipetostarttv.setText("");
-            imageView.setImageResource(R.drawable.screen1);
-            linearLayout.setBackgroundResource(R.drawable.backscreen2);
+            imageView.setImageResource(R.drawable.image5);
         } //       recyclerView.setAdapter(new DirectoryCustomAdapter(getActivity(), 4));
         else if (mPage == 2) {
 
             swipetostartiv.setImageResource(0);
             swipetostarttv.setText("");
-            imageView.setImageResource(R.drawable.screen2);
-            linearLayout.setBackgroundResource(R.drawable.backscreen2);
+            imageView.setImageResource(R.drawable.image2);
+
 
         } else {
 
-            imageView.setImageResource(R.drawable.screen3);
-            linearLayout.setBackgroundResource(R.drawable.backscreen2);
+            imageView.setImageResource(R.drawable.image10);
             swipetostartiv.setImageResource(R.drawable.ic_arrow_forward_black_18dp);
             swipetostarttv.setText("Swipe to Start");
         }

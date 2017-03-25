@@ -21,19 +21,19 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#2f4f4f"
+            android:background="#17AB7E"
             android:orientation="vertical">
 
-            <TextView
+           <!-- <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="SignUp"
+                android:text="College Buddy"
                 android:textColor="#fff"
-                android:textSize="35sp"
+                android:textSize="15sp"
                 android:textStyle="bold"
                 android:tint="@android:color/white" />
-
+-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -299,16 +299,26 @@
                         android:textColorHint="@android:color/white" />
                 </LinearLayout>
 
-                <Button
-                    android:id="@+id/submit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/colorPrimary"
-                    android:text="Submit" />
+
 
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:background="#17AB7E">
 
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="Sign In"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:background="#17AB7E"/>
+    </LinearLayout>
 </RelativeLayout>

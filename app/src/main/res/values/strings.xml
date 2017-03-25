@@ -14,13 +14,19 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_reminder">Reminder</string>
     <string-array name="list_of_teachers">
-    <item>Teacher2</item>
-    <item>Teacher3</item>
-    <item>Teacher4</item>
-    <item>Teacher5</item>
-    <item>Teacher6</item>
-    <item>Teacher7</item>
-    <item>Teacher8</item>
-    <item>Teacher1</item>
-</string-array>
+        <item>Teacher2</item>
+        <item>Teacher3</item>
+        <item>Teacher4</item>
+        <item>Teacher5</item>
+        <item>Teacher6</item>
+        <item>Teacher7</item>
+        <item>Teacher8</item>
+        <item>Teacher1</item>
+    </string-array>
+    <string name="title_activity_review">Review</string>
+    <string name="title_activity_upload_subjects">UploadSubjects</string>
+    <string name="title_activity_write_query">WriteQuery</string>
+    <string name="title_activity_notification">Notification</string>
+    <string name="title_activity_attendance">Attendance</string>
+    <string name="title_activity_writee_review">WriteeReview</string>
 </resources>

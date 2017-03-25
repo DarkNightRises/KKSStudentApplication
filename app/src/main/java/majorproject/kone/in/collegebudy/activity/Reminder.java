@@ -3,6 +3,7 @@ package majorproject.kone.in.collegebudy.activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -13,6 +14,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -32,15 +34,17 @@ public class Reminder extends AppCompatActivity {
     String titleData, dateData, descriptionData, timeData;
     public static TextView noReminderText;
     public static ImageView noImageReminder;
-    private int REQUEST_CODE=1;
+
+    private int REQUEST_CODE = 1;
     private RecyclerView mRecyclerView;
     public static RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private static List<ReminderList> reminderList;
+    private static ArrayList<ReminderList> reminderList;
     public static ReminderDbHelper reminderDbHelper;
-
-
-    public static void getAllReminder(){
+    private Intent intent;
+    public static int INTENT_CODE=100;
+    private ImageView no_notification_view;
+    public static void getAllReminder() {
         reminderList.clear();
         reminderList.addAll(Reminder.reminderDbHelper.getAllReminders());
         mAdapter.notifyDataSetChanged();
@@ -50,24 +54,40 @@ public class Reminder extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reminder);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        no_notification_view = (ImageView) findViewById(R.id.no_notification_imageview);
         reminderDbHelper = new ReminderDbHelper(Reminder.this);
         noReminderText = (TextView) findViewById(R.id.no_notification_textview);
         noImageReminder = (ImageView) findViewById(R.id.no_notification_imageview);
-        mRecyclerView=(RecyclerView) findViewById(R.id.reminder_Recyclerview);
+        mRecyclerView = (RecyclerView) findViewById(R.id.reminder_Recyclerview);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        ReminderDbHelper reminderDbHelper=new ReminderDbHelper(this);
-        reminderList=reminderDbHelper.getAllReminders();
-        mAdapter =new RecyclerViewAdapter(reminderList);
+        reminderDbHelper = new ReminderDbHelper(this);
+
+        reminderList = reminderDbHelper.getAllReminders();
+        if(reminderList.size()>0) {
+            noImageReminder.setVisibility(View.GONE);
+            no_notification_view.setVisibility(View.GONE);
+        }
+        mAdapter = new RecyclerViewAdapter(reminderList);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               startActivity(new Intent(Reminder.this,AddReminder.class));
+                intent = new Intent(Reminder.this, AddReminder.class);
+                startActivityForResult(intent,INTENT_CODE);
 
 
             }
@@ -76,9 +96,14 @@ public class Reminder extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode==REQUEST_CODE && resultCode==RESULT_OK)
-        {
-
+        if (requestCode == INTENT_CODE) {
+            reminderList.clear();
+            Log.d("Length ","Length is "+reminderDbHelper.getAllReminders().size());
+            reminderList.addAll(reminderDbHelper.getAllReminders());
+            if(reminderList.size()>0) {
+                noImageReminder.setVisibility(View.GONE);
+                no_notification_view.setVisibility(View.GONE);
+            }mAdapter.notifyDataSetChanged();
         }
 
     }

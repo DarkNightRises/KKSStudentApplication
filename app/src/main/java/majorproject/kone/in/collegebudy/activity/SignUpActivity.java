@@ -152,7 +152,7 @@ public class SignUpActivity extends Activity implements NetworkResponseListener,
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.submit:
-                singup();
+                upload();
         }
     }
 
@@ -173,6 +173,12 @@ public class SignUpActivity extends Activity implements NetworkResponseListener,
                 e.printStackTrace();
             }
         }
+    }
+    public void upload()
+    {
+        Intent intent = new Intent(SignUpActivity.this,UploadSubjects.class);
+        startActivity(intent);
+        finish();
     }
     public boolean validate(){
         /***

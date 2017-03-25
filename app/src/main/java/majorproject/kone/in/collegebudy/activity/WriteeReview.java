@@ -9,12 +9,12 @@ import android.view.View;
 
 import majorproject.kone.in.collegebudy.R;
 
-public class NotificationActivity extends AppCompatActivity {
+public class WriteeReview extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notification);
+        setContentView(R.layout.activity_writee_review);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

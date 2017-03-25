@@ -1,85 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="100dp"
-    android:id="@+id/relative_query"
-    android:orientation="vertical">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/locket">
 
-    <android.support.v7.widget.CardView
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:scrollbarAlwaysDrawVerticalTrack="true">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <RelativeLayout
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:hint="Enter Query"
-                android:textColor="@color/colorPrimary"
-                android:textSize="10sp"
-                android:textStyle="bold" />
-
-            </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_below="@+id/login_title"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="70dp"
+            android:background="#fff"
+            android:elevation="4dp"
             android:orientation="vertical"
             android:padding="20dp">
 
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="100dp">
-
-                <EditText
-                    android:id="@+id/query"
-                    android:layout_width="fill_parent"
-                    android:layout_height="45dp"
-                    android:inputType="textMultiLine"
-                    android:lines="10"
-                    android:maxLines="20"
-                    android:singleLine="true"
-                    android:textColor="@android:color/black"
-                    android:textColorHint="@android:color/white" />
-            </android.support.v7.widget.CardView>
-
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:hint="Select Teacher"
-                android:textColor="@color/colorPrimary"
-                android:textSize="10sp"
-                android:textStyle="bold" />
+                android:orientation="vertical"
+                android:paddingTop="30dp">
 
-            <AutoCompleteTextView
-                android:id="@+id/query_auto"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="UserName" />
 
-        </LinearLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableTint="#FF4081">
+
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableTint="#FF4081"
+                        android:inputType="text"
+                        android:singleLine="true"
+                        android:text="KARAN" />
+                </android.support.design.widget.TextInputLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="College" />
 
 
-    </android.support.v7.widget.CardView>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableTint="#FF4081"
+                        android:inputType="text"
+                        android:singleLine="true"
+                        android:text="AKGGEC" />
+                </android.support.design.widget.TextInputLayout>
 
 
+                   </LinearLayout>
+        </RelativeLayout>
+
+
+
+      </RelativeLayout>
     <Button
-        android:id="@+id/sendQuery"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:text="SEND QUERY"
+        android:background="#f52e2103"
+        android:text="Send Query"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        android:id="@+id/calling"
         android:layout_alignParentBottom="true"/>
 
-
 </RelativeLayout>
-

@@ -26,7 +26,7 @@ public class AddReminder extends AppCompatActivity implements View.OnClickListen
     DatePicker datePicker;
     Button save;
     boolean flag;
-
+    ReminderDbHelper dbHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +34,7 @@ public class AddReminder extends AppCompatActivity implements View.OnClickListen
         title = (EditText) findViewById(R.id.title);
         description = (EditText) findViewById(R.id.description);
         datePicker = (DatePicker) findViewById(R.id.reminderDatePicker);
+        dbHelper = new ReminderDbHelper(AddReminder.this);
         save = (Button) findViewById(R.id.save);
         save.setOnClickListener(this);
 
@@ -47,14 +48,13 @@ public class AddReminder extends AppCompatActivity implements View.OnClickListen
         int day = datePicker.getDayOfMonth();
         int month = datePicker.getMonth() + 1;
         int year = datePicker.getYear();
-        ReminderDbHelper dbHelper = new ReminderDbHelper(this);
         flag=dbHelper.insertReminders(titleData, day, month, year);
         if(flag)
         {
-            Log.d("1","false or true value");
+            Log.d("1","false or true value "+dbHelper.numberOfRows());
+            Intent intent = new Intent();
+            setResult(Reminder.INTENT_CODE,intent);
+            finish();
         }
-        dbHelper.getAllReminders();
-        onBackPressed();
-
     }
 }
