@@ -64,6 +64,7 @@ public class NavigationActivity extends AppCompatActivity
     private Location mLastLocation;
     private ScrollView scrollViewHome;
     private ReminderDbHelper reminderDbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +72,7 @@ public class NavigationActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         initialiseViewPager();
+        saveProfile();
         scrollViewHome = (ScrollView) findViewById(R.id.scrollview_homefragment);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         currentLocation = new LatLng(28.6767091, 77.4997618);
@@ -98,7 +100,7 @@ public class NavigationActivity extends AppCompatActivity
         Log.d("Refershered token", token);
         mSharedPreferences = SharedPreferencesSingleton.getSharedPreference();
         mEditor = SharedPreferencesSingleton.getSharedPreferenceEditor();
-        reminderDbHelper= new ReminderDbHelper(NavigationActivity.this);
+        reminderDbHelper = new ReminderDbHelper(NavigationActivity.this);
     }
 
     @Override
@@ -155,14 +157,12 @@ public class NavigationActivity extends AppCompatActivity
             i.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject test");
             i.putExtra(android.content.Intent.EXTRA_TEXT, "extra text that you want to put");
             startActivity(Intent.createChooser(i, "Share via"));
-            intent=null;
-        }
-        else if(id == R.id.nav_profile)
-        {
+            intent = null;
+        } else if (id == R.id.nav_profile) {
             intent = new Intent(NavigationActivity.this, PersonalFragment.class);
         }
-        if(intent!=null)
-        startActivity(intent);
+        if (intent != null)
+            startActivity(intent);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -192,5 +192,8 @@ public class NavigationActivity extends AppCompatActivity
         startActivity(intent);
     }
 
+    public void saveProfile()
+    {
 
+    }
 }

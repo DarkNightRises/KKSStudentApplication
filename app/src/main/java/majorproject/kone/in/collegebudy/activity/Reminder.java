@@ -1,6 +1,7 @@
 package majorproject.kone.in.collegebudy.activity;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.Image;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -21,6 +23,7 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +31,7 @@ import java.util.List;
 import majorproject.kone.in.collegebudy.R;
 import majorproject.kone.in.collegebudy.adapter.RecyclerViewAdapter;
 
-public class Reminder extends AppCompatActivity {
+public class Reminder extends AppCompatActivity implements DialogInterface{
 
     EditText title, date, description, time;
     String titleData, dateData, descriptionData, timeData;
@@ -58,7 +61,7 @@ public class Reminder extends AppCompatActivity {
         setSupportActionBar(toolbar);
         no_notification_view = (ImageView) findViewById(R.id.no_notification_imageview);
         reminderDbHelper = new ReminderDbHelper(Reminder.this);
-        noReminderText = (TextView) findViewById(R.id.no_notification_textview);
+        //noReminderText = (TextView) findViewById(R.id.no_notification_textview);
         noImageReminder = (ImageView) findViewById(R.id.no_notification_imageview);
         mRecyclerView = (RecyclerView) findViewById(R.id.reminder_Recyclerview);
         mRecyclerView.setHasFixedSize(true);
@@ -70,6 +73,7 @@ public class Reminder extends AppCompatActivity {
         if(reminderList.size()>0) {
             noImageReminder.setVisibility(View.GONE);
             no_notification_view.setVisibility(View.GONE);
+           // noReminderText.setVisibility(View.GONE);
         }
         mAdapter = new RecyclerViewAdapter(reminderList);
         mRecyclerView.setAdapter(mAdapter);
@@ -112,4 +116,43 @@ public class Reminder extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
     }
+
+    public void reminderDelete(View view)
+    {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                Reminder.this);
+
+        alertDialogBuilder.setTitle("Reminders");
+        alertDialogBuilder.setCancelable(true);
+        alertDialogBuilder
+                .setMessage("Are you sure you want to delete the reminder")
+                .setCancelable(true)
+                .setPositiveButton( "Yes",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        try {
+                        } catch (Exception e) {
+                        }
+                    }
+                })
+                .setNegativeButton("No",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        alertDialog.show();    }
+
+    @Override
+    public void cancel() {
+
+    }
+
+    @Override
+    public void dismiss() {
+
+    }
 }
+
+

@@ -14,6 +14,7 @@ import majorproject.kone.in.collegebudy.Utility.SharedPreferencesSingleton;
 public class Student {
     JSONObject studentInfo ;
     private SharedPreferences sharedPreferences;
+    public static final String MY_PREFS_NAME = "BuddyPreferences";
     public static String id = "id";
     public static String name = "name";
     public static String section_id = "section_id";
@@ -31,7 +32,6 @@ public class Student {
         saveStudentInfo();
     }
     private void saveStudentInfo(){
-//      sharedPreferences = SharedPreferencesSingleton.getSharedPreference();
       editor = SharedPreferencesSingleton.getSharedPreferenceEditor();
         try {
             editor.putInt(id,studentInfo.getInt(id));
