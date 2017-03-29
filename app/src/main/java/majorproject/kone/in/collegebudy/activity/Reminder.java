@@ -16,6 +16,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,11 +48,6 @@ public class Reminder extends AppCompatActivity implements DialogInterface{
     private Intent intent;
     public static int INTENT_CODE=100;
     private ImageView no_notification_view;
-    public static void getAllReminder() {
-        reminderList.clear();
-        reminderList.addAll(Reminder.reminderDbHelper.getAllReminders());
-        mAdapter.notifyDataSetChanged();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +92,11 @@ public class Reminder extends AppCompatActivity implements DialogInterface{
 
             }
         });
+
+        ItemTouchHelper.Callback callback =
+                new SimpleItemTouchHelperCallback((ItemTouchHelperAdapter) mAdapter);
+        ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
+        touchHelper.attachToRecyclerView(mRecyclerView);
     }
 
     @Override
@@ -119,30 +120,7 @@ public class Reminder extends AppCompatActivity implements DialogInterface{
 
     public void reminderDelete(View view)
     {
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                Reminder.this);
-
-        alertDialogBuilder.setTitle("Reminders");
-        alertDialogBuilder.setCancelable(true);
-        alertDialogBuilder
-                .setMessage("Are you sure you want to delete the reminder")
-                .setCancelable(true)
-                .setPositiveButton( "Yes",new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,int id) {
-                        try {
-                        } catch (Exception e) {
-                        }
-                    }
-                })
-                .setNegativeButton("No",new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,int id) {
-                        dialog.cancel();
-                    }
-                });
-
-        AlertDialog alertDialog = alertDialogBuilder.create();
-
-        alertDialog.show();    }
+            }
 
     @Override
     public void cancel() {
