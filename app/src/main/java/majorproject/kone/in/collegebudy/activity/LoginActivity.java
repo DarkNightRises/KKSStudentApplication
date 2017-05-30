@@ -161,7 +161,7 @@ public class LoginActivity extends Activity implements NetworkResponseListener, 
     public void postRequest(String result) throws MalformedURLException {
         progressBar.setVisibility(View.GONE);
         Log.d("Final Result", "  " + result);
-        if(FetchData.isOnline(this)) {
+        if(FetchData.isOnline(this)&&result!=null) {
             try {
                 JSONObject jsonObject = new JSONObject(result);
                 if ((jsonObject.getBoolean("success")) == true) {

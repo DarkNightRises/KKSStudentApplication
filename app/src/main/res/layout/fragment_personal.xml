@@ -55,7 +55,8 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:drawableTint="#FF4081"
-                        android:inputType="text"
+                        android:inputType="none"
+                        android:focusable="false"
                         android:singleLine="true"
                         android:text="KARAN" />
                 </android.support.design.widget.TextInputLayout>
@@ -74,7 +75,8 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:drawableTint="#FF4081"
-                        android:inputType="text"
+                        android:inputType="none"
+                        android:focusable="false"
                         android:singleLine="true"
                         android:text="AKGGEC" />
                 </android.support.design.widget.TextInputLayout>
@@ -93,8 +95,9 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:drawableTint="#FF4081"
-                        android:inputType="text"
+                        android:inputType="none"
                         android:singleLine="true"
+                        android:focusable="false"
                         android:text="CSE" />
                 </android.support.design.widget.TextInputLayout>
 
@@ -111,8 +114,10 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:drawableTint="#FF4081"
-                        android:inputType="textEmailAddress"
+                        android:inputType="none"
                         android:singleLine="true"
+                        android:focusable="false"
+
                         android:text="CSE_2" />
                 </android.support.design.widget.TextInputLayout>
 
@@ -129,8 +134,10 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:drawableTint="#FF4081"
-                        android:inputType="number"
+                        android:inputType="none"
                         android:singleLine="true"
+                        android:focusable="false"
+
                         android:text="1302710073" />
                 </android.support.design.widget.TextInputLayout>
 
@@ -148,7 +155,9 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/phoneNumber"
                         android:drawableTint="#FF4081"
-                        android:inputType="number"
+                        android:focusable="false"
+
+                        android:inputType="none"
                         android:singleLine="true"
                         android:text="9411275676" />
                 </android.support.design.widget.TextInputLayout>
@@ -163,6 +172,7 @@
                     android:textAllCaps="false"
                     android:textColor="#fff"
                     android:textSize="18sp"
+
                     android:id="@+id/calling"/>
             </LinearLayout>
         </RelativeLayout>
